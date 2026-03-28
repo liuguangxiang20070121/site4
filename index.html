@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>汽车滚动放大动画</title>
+  <style>
+    /* 重置默认边距，设置全屏深色背景 */
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background-color: #0f172a; /* 深蓝色背景 */
+    }
+
+    /* 汽车容器的初始样式和动画绑定 */
+    .car-container {
+      position: absolute;
+      color: #34d399; /* 翠绿色 */
+      filter: drop-shadow(0 25px 25px rgba(0, 0, 0, 0.5)); /* 阴影效果 */
+      /* 总时长 4.5s (4s 动画 + 0.5s 停顿)，无限循环 */
+      animation: rollCar 4.5s ease-in-out infinite;
+    }
+
+    /* SVG 图标样式 */
+    .car-container svg {
+      width: 48px;
+      height: 48px;
+      stroke: currentColor;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+
+    /* 关键帧动画 */
+    @keyframes rollCar {
+      0% {
+        /* 起始位置：左上角，缩小到 0.2 倍，不旋转 */
+        transform: translate(5vw, 5vh) scale(0.2) rotate(0deg);
+      }
+      88.88% {
+        /* 4秒时的状态 (4 / 4.5 = 88.88%) */
+        /* 结束位置：右下角，放大 6 倍，旋转 3 圈 (1080度) */
+        transform: translate(85vw, 80vh) scale(6) rotate(1080deg);
+      }
+      100% {
+        /* 保持结束状态 0.5 秒，形成停顿感 */
+        transform: translate(85vw, 80vh) scale(6) rotate(1080deg);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 汽车图标容器 -->
+  <div class="car-container">
+    <!-- 汽车的 SVG 图标代码 -->
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2" />
+      <circle cx="7" cy="17" r="2" />
+      <path d="M9 17h6" />
+      <circle cx="17" cy="17" r="2" />
+    </svg>
+  </div>
+
+</body>
+</html>
